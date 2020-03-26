@@ -20,7 +20,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DiceeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="mpV-Vb-uPT">
-                                <rect key="frame" x="10" y="137" width="394.00000000000006" height="128"/>
+                                <rect key="frame" x="10" y="137" width="394" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="QMa-NF-2gb"/>
                                 </constraints>
@@ -69,6 +69,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="diceImageView1" destination="MPD-Xv-i4s" id="bax-Yy-NUj"/>
+                        <outlet property="diceImageView2" destination="1Mv-2A-Rzy" id="Oic-pl-NxF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
