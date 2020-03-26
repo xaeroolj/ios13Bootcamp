@@ -19,12 +19,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         diceImageView1.image = #imageLiteral(resourceName: "DiceSix")
-        diceImageView1.alpha = 0.5
-        
         diceImageView2.image = #imageLiteral(resourceName: "DiceTwo")
+        
+//        diceImageView1.alpha = 0.5
+
         
     }
 
-
+    @IBAction func rollButtonWasPressed(_ sender: Any) {
+        diceImageView1.image = #imageLiteral(resourceName: "DiceTwo")
+        diceImageView2.image = #imageLiteral(resourceName: "DiceSix")
+    }
+    
 }
 
