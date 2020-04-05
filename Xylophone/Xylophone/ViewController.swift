@@ -52,8 +52,14 @@ class ViewController: UIViewController {
 //        print(sender.currentTitle!)
         playSound(sender.currentTitle!)
         sender.layer.opacity = 0.5
-        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (_) in
-            sender.layer.opacity = 1
+//        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (_) in
+//            sender.layer.opacity = 1
+//        }
+        
+        //Code should execute after 0.2 second delay.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            //Bring's sender's opacity back up to fully opaque.
+            sender.alpha = 1.0
         }
     }
     
