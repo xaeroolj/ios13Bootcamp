@@ -120,6 +120,21 @@
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJN-th-c5K" userLabel="Timer View">
                                         <rect key="frame" x="0.0" y="571.5" width="374" height="246.5"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5H4-ak-0ex">
+                                                <rect key="frame" x="0.0" y="120.5" width="374" height="6"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="Rhq-BN-aE1"/>
+                                                </constraints>
+                                                <color key="progressTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="trackTintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </progressView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5H4-ak-0ex" secondAttribute="trailing" id="3vU-v6-2fH"/>
+                                            <constraint firstItem="5H4-ak-0ex" firstAttribute="leading" secondItem="nJN-th-c5K" secondAttribute="leading" id="DZS-Re-01N"/>
+                                            <constraint firstItem="5H4-ak-0ex" firstAttribute="centerY" secondItem="nJN-th-c5K" secondAttribute="centerY" id="J76-zY-uNq"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -135,6 +150,7 @@
                     </view>
                     <connections>
                         <outlet property="mainLbl" destination="XLm-5r-pSP" id="grM-4L-nB7"/>
+                        <outlet property="progressBar" destination="5H4-ak-0ex" id="1dm-YK-HKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
