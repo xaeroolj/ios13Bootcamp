@@ -49,8 +49,12 @@ class ViewController: UIViewController {
 
     
     @IBAction func keyPressed(_ sender: UIButton) {
-        print(sender.currentTitle!)
+//        print(sender.currentTitle!)
         playSound(sender.currentTitle!)
+        sender.layer.opacity = 0.5
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { (_) in
+            sender.layer.opacity = 1
+        }
     }
     
 }
