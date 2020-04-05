@@ -10,10 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let softTime = 5
-    let mediumTime = 7
-    let hardTime = 12
-    
     let eggTimes = ["Soft" : 5,
                     "Medium" : 7,
                     "Hard" : 12]
@@ -22,25 +18,23 @@ class ViewController: UIViewController {
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness = sender.currentTitle!
         
-        print(eggTimes[hardness]!)
+//        print(eggTimes[hardness]!)
+        countdownStart(eggTimes[hardness]! * 60)
         
-//        switch hardness {
-//        case "Soft":
-//            print(softTime)
-//        case "Medium":
-//            print(mediumTime)
-//        case "Hard":
-//            print(hardTime)
-//        default:
-//            fatalError("Error")
-//        }
-        
-//        if hardness == "Soft" {
-//            print(softTime)
-//        } else if hardness == "Medium" {
-//            print(mediumTime)
-//        } else {
-//            print(hardTime)
-//        }
+    }
+    
+    func countdownStart(_ seconds: Int) {
+        var secondsLeft = seconds
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            if secondsLeft == 0 {
+                print(secondsLeft)
+                timer.invalidate()
+            }else {
+                print(secondsLeft)
+                secondsLeft -= 1
+            }
+            
+            
+        }
     }
 }
