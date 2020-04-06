@@ -48,9 +48,11 @@ class ViewController: UIViewController {
         let userAnswer = sender.currentTitle!
         let acualAnswer = quiz[questionNumber].answer
         if userAnswer == acualAnswer {
-            print("Right")
+//            print("Right")
+            sender.backgroundColor = UIColor.green
         }else {
-            print("Wrong")
+//            print("Wrong")
+            sender.backgroundColor = UIColor.red
         }
         
         if questionNumber < quiz.count - 1 {
@@ -58,14 +60,16 @@ class ViewController: UIViewController {
         }else {
             questionNumber = 0
         }
-        
-        updateUI()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
 
         
     }
     
-    func updateUI() {
+    @objc func updateUI() {
         questionLbl.text = quiz[questionNumber].text
+        self.trueBtn.backgroundColor = UIColor.clear
+        self.falseBtn.backgroundColor = UIColor.clear
+        
     }
     
 
