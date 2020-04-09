@@ -16,13 +16,22 @@ class ViewController: UIViewController {
     }
     @IBAction func heightSliderDidChanged(_ sender: Any) {
         let slider = sender as! UISlider
-        print(slider.value)
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.decimal
+        formatter.roundingMode = NumberFormatter.RoundingMode.halfUp
+        formatter.maximumFractionDigits = 2
+
+        let roundedValue = formatter.string(from: NSNumber(value: slider.value))
+
+        
+        print(roundedValue!)
     }
     
-    @IBAction func weightSliderDidChanged(_ sender: Any) {
+    @IBAction func weightSliderDidChanged(_ sender: UISlider) {
         
-        let slider = sender as! UISlider
-        print(slider.value)
+        
+        print(sender.value)
     }
     
 
