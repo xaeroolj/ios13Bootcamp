@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     @IBAction func weightSliderDidChanged(_ sender: UISlider) {
         
         
-        print(sender.value)
+        print(String(format: "%.2f", sender.value))
     }
     
 
