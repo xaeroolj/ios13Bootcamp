@@ -60,7 +60,7 @@ class CalculateViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResults" {
             let destinationVC = segue.destination as! ResultViewController
-            destinationVC.bmiValue = String(format: "%0.1f", bmi)
+            destinationVC.bmiValue = String(format: "%.1f", bmi)
         }
     }
 }

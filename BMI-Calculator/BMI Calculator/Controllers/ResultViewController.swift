@@ -19,11 +19,12 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bmiLabel.text = bmiValue ?? "00.0"
+        bmiLabel.text = bmiValue
 
         
     }
     @IBAction func recalculatedWasPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
