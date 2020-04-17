@@ -13,7 +13,7 @@ class CalculatorViewController: UIViewController {
     //Vars
     var selectedTipPct: Double = 0.0
     var numberOfPeople = 2
-    
+    var billPerPerson: Double = 0.0
     
     
     //Outlets
@@ -49,15 +49,23 @@ class CalculatorViewController: UIViewController {
     @IBAction func calculatePressed(_ sender: UIButton) {
         
         if let bill = Double(billTextField.text!) {
-            let billPerPerson = (bill + (bill * selectedTipPct)) / Double(numberOfPeople)
+            billPerPerson = (bill + (bill * selectedTipPct)) / Double(numberOfPeople)
             print(String(format: "%.2f", billPerPerson))
-            
+            self.performSegue(withIdentifier: "resultSegue", sender: self)
         } else {
             print("Enter correct Bill value")
         }
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "resultSegue" {
+            let destinatioVC = segue.destination as! ResultsViewController
+            destinatioVC.total = billPerPerson
+            destinatioVC.numberOfPerson = numberOfPeople
+            destinatioVC.tipPct = selectedTipPct
+        }
+    }
 
 }
 
