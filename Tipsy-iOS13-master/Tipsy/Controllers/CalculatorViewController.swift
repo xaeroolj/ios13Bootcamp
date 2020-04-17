@@ -12,6 +12,7 @@ class CalculatorViewController: UIViewController {
     
     //Vars
     var selectedTipPct: Double = 0.0
+    var numberOfPeople = 2
     
     
     //Outlets
@@ -37,11 +38,14 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        numberOfPeople = Int(sender.value)
+        splitNumberLabel.text = String(numberOfPeople)
     
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         print(selectedTipPct)
+        print(numberOfPeople)
     }
     
 
