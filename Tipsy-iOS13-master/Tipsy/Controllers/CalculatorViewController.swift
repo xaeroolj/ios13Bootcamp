@@ -15,6 +15,7 @@ class CalculatorViewController: UIViewController {
     var numberOfPeople = 2
     
     
+    
     //Outlets
     @IBOutlet weak var billTextField: UITextField!
     @IBOutlet weak var zeroPctButton: UIButton!
@@ -26,6 +27,8 @@ class CalculatorViewController: UIViewController {
     //Actions
     
     @IBAction func tipChanged(_ sender: UIButton) {
+        
+        billTextField.endEditing(true)
         
         zeroPctButton.isSelected = false
         tenPctButton.isSelected = false
@@ -44,10 +47,16 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-        print(selectedTipPct)
-        print(numberOfPeople)
+        
+        if let bill = Double(billTextField.text!) {
+            let billPerPerson = (bill + (bill * selectedTipPct)) / Double(numberOfPeople)
+            print(String(format: "%.2f", billPerPerson))
+            
+        } else {
+            print("Enter correct Bill value")
+        }
+        
     }
-    
 
 
 }
