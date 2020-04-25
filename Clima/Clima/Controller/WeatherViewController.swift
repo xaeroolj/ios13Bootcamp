@@ -15,6 +15,9 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     
+    var wheatherManager = WeatherManager()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.delegate = self
@@ -41,6 +44,9 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         //Todo: use searchTextField.text to get weather for selected City
+        if let city = searchTextField.text {
+            wheatherManager.fetchWeather(cityName: city)
+        }
 
         searchTextField.text = ""
         searchTextField.placeholder = "Search"
