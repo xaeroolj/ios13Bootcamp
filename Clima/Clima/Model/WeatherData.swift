@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct WeatherData: Decodable {
+struct WeatherData: Codable {
     let name: String
     let main: WeatherDataMain
     let weather: [WeatherArrayItem]
 }
 
-struct WeatherDataMain: Decodable {
+struct WeatherDataMain: Codable {
     let temp: Double
 }
 
-struct WeatherArrayItem: Decodable {
+struct WeatherArrayItem: Codable {
     let description: String
     let id: Int
 }
