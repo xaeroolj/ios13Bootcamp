@@ -20,4 +20,5 @@ struct WeatherDataMain: Decodable {
 
 struct WeatherArrayItem: Decodable {
     let description: String
+    let id: Int
 }
