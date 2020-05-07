@@ -55,8 +55,14 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
         searchTextField.placeholder = "Search"
     }
     
-    func didUpdateWeather(weather: WeatherModel) {
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         print(weather.temperatureString)
     }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
 }
+
+
 
