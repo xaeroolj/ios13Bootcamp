@@ -15,21 +15,40 @@ class ViewController: UIViewController {
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var currencyPicker: UIPickerView!
     
-    let coinManager = CoinManager()
+    var coinManager = CoinManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        coinManager.delegate = self
         currencyPicker.dataSource = self
         currencyPicker.delegate = self
     }
 
 
 }
+extension ViewController: CoinManagerDelegate {
+    func rateRecived(_ rate: String) {
+        DispatchQueue.main.async {
+            self.bitcoinLabel.text = rate
+        }
+        
+    }
+    
+    func didFailWithError(_ error: Error) {
+        print("Request error: \(error.localizedDescription)")
+    }
+    
+    
+}
 
 extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        coinManager.getCoinPrice(for: coinManager.currencyArray[row])
+        let currency = coinManager.currencyArray[row]
+        coinManager.getCoinPrice(for: currency)
+        currencyLabel.text = currency
+        self.bitcoinLabel.text = "..."
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

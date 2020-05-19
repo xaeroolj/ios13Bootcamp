@@ -8,10 +8,17 @@
 
 import Foundation
 
+protocol CoinManagerDelegate {
+    func rateRecived(_ rate: String)
+    func didFailWithError(_ error: Error)
+}
+
 struct CoinManager {
     
     let baseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
     let apiKey = API_KEY
+    
+    var delegate: CoinManagerDelegate?
     
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
 
@@ -28,6 +35,7 @@ struct CoinManager {
             return rate
         } catch {
             print("Decode Error: \(error)")
+            delegate?.didFailWithError(error)
             return nil
         }
     }
@@ -38,12 +46,17 @@ struct CoinManager {
         let task = session.dataTask(with: url) { (data, responce, error) in
             if error != nil {
                 print("Have error on request")
+                self.delegate?.didFailWithError(error!)
             } else {
-                let responceString = String(data: data!, encoding: .utf8)
-                print(responceString!)
-                let rate = self.parseJSON(data!)
-                let rateString = String(format: "%.2f", rate!)
-                print("Parsed Rate = \(rateString)")
+//                let responceString = String(data: data!, encoding: .utf8)
+//                print(responceString!)
+                if let rate = self.parseJSON(data!) {
+                    let rateString = String(format: "%.2f", rate)
+                    print("Parsed Rate = \(rateString)")
+                    self.delegate?.rateRecived(rateString)
+                }
+                
+                
             }
         }
         task.resume()
