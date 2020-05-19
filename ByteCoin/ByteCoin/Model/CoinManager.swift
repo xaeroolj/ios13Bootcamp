@@ -20,6 +20,18 @@ struct CoinManager {
         performRequest(with: urlString)
     }
     
+    func parseJSON(_ data: Data) -> Double? {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(CoinData.self, from: data)
+            let rate = decodedData.rate
+            return rate
+        } catch {
+            print("Decode Error: \(error)")
+            return nil
+        }
+    }
+    
     func performRequest(with urlString: String) {
         guard let url = URL(string: urlString) else {return}
         let session = URLSession(configuration: .default)
@@ -29,6 +41,9 @@ struct CoinManager {
             } else {
                 let responceString = String(data: data!, encoding: .utf8)
                 print(responceString!)
+                let rate = self.parseJSON(data!)
+                let rateString = String(format: "%.2f", rate!)
+                print("Parsed Rate = \(rateString)")
             }
         }
         task.resume()
