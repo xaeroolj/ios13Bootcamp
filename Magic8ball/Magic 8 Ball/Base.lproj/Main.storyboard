@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Magic_8_Ball" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bX0-NM-oUw">
+                                <rect key="frame" x="80" y="321" width="254" height="254"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bX0-NM-oUw" secondAttribute="height" multiplier="1:1" id="wuS-e9-Hsd"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81Q-Jl-41t">
+                                <rect key="frame" x="130" y="640" width="154" height="138"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                <inset key="contentEdgeInsets" minX="50" minY="50" maxX="50" maxY="50"/>
+                                <state key="normal" title="Ask">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="askBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wNE-mD-sSv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask Me Anything" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOx-qY-J86">
+                                <rect key="frame" x="55.5" y="167" width="303" height="47"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bX0-NM-oUw" secondAttribute="trailing" constant="80" id="5hA-2f-oqM"/>
+                            <constraint firstItem="81Q-Jl-41t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ERr-3o-UVa"/>
+                            <constraint firstItem="bX0-NM-oUw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="RGQ-oG-IlL"/>
+                            <constraint firstItem="AOx-qY-J86" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VfQ-aC-RZE"/>
+                            <constraint firstItem="bX0-NM-oUw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b1B-hX-ilV"/>
+                            <constraint firstItem="AOx-qY-J86" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="123" id="lCu-k0-oyP"/>
+                            <constraint firstItem="81Q-Jl-41t" firstAttribute="top" secondItem="bX0-NM-oUw" secondAttribute="bottom" constant="65" id="lTS-2j-KLt"/>
+                            <constraint firstItem="bX0-NM-oUw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tuu-Wz-emd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="bX0-NM-oUw" id="eDR-UD-EL4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="116.51785714285714"/>
+        </scene>
+    </scenes>
+</document>
