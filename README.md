@@ -11,4 +11,20 @@
 
 6. Xylophone
 
-7. 
+7. Egg timer
+
+8. Quizzler
+
+9. Destini
+
+10. BMI Calculator
+
+12. Tipsy
+
+13. Clima
+
+14. Bitcoin Price
+
+15. FlashChat
+
+
