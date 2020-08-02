@@ -25,10 +25,10 @@
 
 14. Bitcoin Price
 
-15. FlashChat
+15. FlashChat -  Section 15
 
-16. H4X0R News
+16. H4X0R News - Section 17
 
-17. Todoey (ToDo List)
+17. Todoey (ToDo List) - Section 19
 
 
