@@ -12,10 +12,13 @@ class ToDoListViewController: UITableViewController {
     
     var itemArray = [Item]()
     
-    let defaults  = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(dataFilePath!)
         
         let item = Item()
         item.title = "Find Mike"
@@ -28,15 +31,10 @@ class ToDoListViewController: UITableViewController {
         let item2 = Item()
         item2.title = "three task"
         itemArray.append(item2)
-//        if let array = defaults.array(forKey: "ToDoListArray") as? [String] {
-//            itemArray = array
-//
-//        }
-
+    
+        
     }
-    
-    ///ToDoItemCell
-    
+        
     //MARK - Tableview Datasource Methods
     
     
@@ -54,11 +52,6 @@ class ToDoListViewController: UITableViewController {
         
         cell.accessoryType = item.done ? .checkmark : .none
         
-//        if item.done {
-//            cell.accessoryType = .checkmark
-//        }else {
-//            cell.accessoryType = .none
-//        }
         return cell
     }
     
@@ -66,18 +59,15 @@ class ToDoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //        print(itemArray[indexPath.row])
-            
+        
         
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-//        if itemArray[indexPath.row].done == false {
-//            itemArray[indexPath.row].done = true
-//        } else {
-//            itemArray[indexPath.row].done = false
-//        }
+        saveItems()
+
         
         
-        tableView.reloadData()
+        
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -86,7 +76,7 @@ class ToDoListViewController: UITableViewController {
         
     }
     
-//    MARK - Add new items
+    //    MARK - Add new items
     
     @IBAction func addButtonPressed(_ sender: Any) {
         
@@ -94,15 +84,13 @@ class ToDoListViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Add New Todoey item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-
+            
             
             let newItem = Item()
             newItem.title = textField.text!
             self.itemArray.append(newItem)
             
-            self.defaults.set(self.itemArray, forKey: "ToDoListArray")
-            
-            self.tableView.reloadData()
+            self.saveItems()
         }
         alert.addAction(action)
         alert.addTextField { (alertTextFIeld) in
@@ -110,6 +98,18 @@ class ToDoListViewController: UITableViewController {
             textField = alertTextFIeld
         }
         present(alert, animated: true, completion: nil)
+    }
+    
+    func saveItems() {
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        }catch {
+            print("Error encoding data:@", error)
+        }
+        
+        self.tableView.reloadData()
     }
 }
 
