@@ -20,18 +20,19 @@ class ToDoListViewController: UITableViewController {
         
         print(dataFilePath!)
         
-        let item = Item()
-        item.title = "Find Mike"
-        itemArray.append(item)
-        
-        let item1 = Item()
-        item1.title = "task two"
-        itemArray.append(item1)
-        
-        let item2 = Item()
-        item2.title = "three task"
-        itemArray.append(item2)
+//        let item = Item()
+//        item.title = "Find Mike"
+//        itemArray.append(item)
+//        
+//        let item1 = Item()
+//        item1.title = "task two"
+//        itemArray.append(item1)
+//        
+//        let item2 = Item()
+//        item2.title = "three task"
+//        itemArray.append(item2)
     
+        loadItems()
         
     }
         
@@ -110,6 +111,18 @@ class ToDoListViewController: UITableViewController {
         }
         
         self.tableView.reloadData()
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do{
+                itemArray = try decoder.decode([Item].self, from: data)
+
+            }catch {
+                print("Error decoding erro: \(error)")
+            }
+        }
     }
 }
 
